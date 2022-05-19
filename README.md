@@ -12,4 +12,6 @@ The data used to fine-tune the generating model was taken from the OpenAI [Grade
 
 To generate questions, I wasn't interested in the answers, so the data was re-formatted as pairs of `prompt`s and `completion`s, with the prompts being `"Create a mathematics question"` and the completions being the questions. This was done with the script `format_data.py` from `/dataset`, with the original and formatted data also being present there.
 ### Fine-tuning
-To fine-tune the generating model, the OpenAI guide to [fine-tuning](https://beta.openai.com/docs/guides/fine-tuning) was followed.
+To fine-tune the generating model, the [OpenAI guide to fine-tuning](https://beta.openai.com/docs/guides/fine-tuning) was followed.
+
+The base model used was the OpenAI GPT-3 Ada model, the smallest, fastest and cheapest model available. To start fine-tuning a test model, the command `openai api fine_tunes.create -t .\dataset\train.jsonl -m ada --suffix "deepteach test" ` was used.
