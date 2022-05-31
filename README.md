@@ -24,7 +24,7 @@ The stop sequence `?` is used, meaning that the model will stop generating token
 
 Afterwards, the more powerful OpenAI GPT-3 DaVinci model is fed the generated question and answers it. A JSON object is also created, containing both the question and the generated answer.
 
-#### Prompt engineering
+### Prompt engineering
 
 The phrase `"Let's think step by step."` is added to the end of the question after a newline. This is the start of the answer to the question, and it further encouraged the model to explain its thinking and increased its accuracy. To illustrate this, the question `"Ludvig Bylund has 1800 cows and half as many pigs on his farm. How many animals does Bylund have in total?"` was given to the model.
 
@@ -41,7 +41,7 @@ Let's think step by step.
 ```
 
 As we can see, the answer quality is improved by prefixing the answer with the phrase.
-#### Examples
+### Examples
 Example question (generated):
 ```
 Mr. Anderson is counting his fish. He has 20 barracuda, 25 sturgeon, 60 bluegill and 70 perch. If Mr. Anderson catches all the fish, how many fish does he have? Explain all steps of your solution.
