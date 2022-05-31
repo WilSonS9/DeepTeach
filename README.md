@@ -20,19 +20,43 @@ Another model with the OpenAI GPT-3 Curie model was fine tuned, but the results 
 ### Generation
 To generate a question and an answer, the script `generate_question.py` can be run. The script uses the fine-tuned model to create a new question by being prompted with `"This is a mathematics question:\n"`.
 
-The stop sequence `?` is used, meaning that the model will stop generating tokens after it has generated a question mark. This is to prevent it from rambling on and creating nonsense questions, which occured when this was neglected. The suffix `Explain all steps of your solution.` is appended to the end of each question to encourage the answering model to motivate their answers.
+The stop sequence `?` is used, meaning that the model will stop generating tokens after it has generated a question mark. This is to prevent it from rambling on and creating nonsense questions, which occured when this was neglected. The suffix `Explain all steps of your solution.` is appended to the end of each question to encourage the answering model to motivate its answers.
 
 Afterwards, the more powerful OpenAI GPT-3 DaVinci model is fed the generated question and answers it. A JSON object is also created, containing both the question and the generated answer.
+
+#### Prompt engineering
+
+The phrase `"Let's think step by step."` is added to the end of the question after a newline. This is the start of the answer to the question, and it further encouraged the model to explain its thinking and increased its accuracy. To illustrate this, the question `"Ludvig Bylund has 1800 cows and half as many pigs on his farm. How many animals does Bylund have in total?"` was given to the model.
+
+Without the phrase:
+```
+Bylund has 2,300 animals in total.
+```
+
+With the phrase:
+```
+Let's think step by step.
+ We can start by finding the number of cows, which is 1800. To find the number of pigs, we can divide 1800 by 2 to get 900. Now we can add 1800 
++ 900 to get the total number of animals, which is 2700.
+```
+
+As we can see, the answer quality is improved by prefixing the answer with the phrase.
 #### Examples
 Example question (generated):
 ```
-A warehouse has 40 boxes with the same contents. Each box contains an equal number of 40 packages and each package contains an equal number of 16 bottles. How many bottles are in the warehouse? Explain all steps of your solution.
+Mr. Anderson is counting his fish. He has 20 barracuda, 25 sturgeon, 60 bluegill and 70 perch. If Mr. Anderson catches all the fish, how many fish does he have? Explain all steps of your solution.
 ```
 
 Example answer (generated):
 
 ```
-There are 40 boxes, each with 40 packages, each with 16 bottles.
+Let's think step by step.
 
-40 x 40 x 16 = 25,600 bottle
+
+Mr. Anderson has 20 barracuda, 25 sturgeon, 60 bluegill and 70 perch.
+
+To find out how many fish Mr. Anderson has in total, we need to add up the number of fish he has for each type.
+
+
+So, if Mr. Anderson catches all the fish, he would have 175 fish in total.
 ```
