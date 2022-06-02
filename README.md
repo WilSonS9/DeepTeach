@@ -60,3 +60,12 @@ To find out how many fish Mr. Anderson has in total, we need to add up the numbe
 
 So, if Mr. Anderson catches all the fish, he would have 175 fish in total.
 ```
+
+### Usage
+To generate a question and solution, run the script `generate_question.py`. Here, four arguments can be provided: `-p`, `-q`, `-g` and `-a`.
+
+The argument `-p` can be used to provide an initial prompt to the question. For example, if the script is run with the command `generate_question.py -p "Ludvig Bylund"`, the question will begin with `Ludvig Bylund`. The rest will be automatically generated.
+
+The argument `-q` can be used to provide an entire question to be answered. If this argument is provided, no question will be generated, and solely an automatically generated solution will be provided. If neither this or the `-p` argument is given, the entire question will be generated automatically.
+
+The arguments `-g` and `-a` are used to provide temperatures for the generation of the question and the solution respectively. A higher temperature will create a more random and chaotic result, and a lower temperature will make the model more determenistic and increase the chances of the model becoming repetitive. If these arguments are not provided, the default value of `0.7` will be used.
